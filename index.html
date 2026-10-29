@@ -68,6 +68,21 @@ input[type=search]{font:inherit;color:var(--ink);background:var(--card);border:1
 .card video{width:100%;max-height:70vh;border-radius:8px;background:#000;margin-top:6px}
 footer{border-top:3px solid var(--gold);padding:18px 0 30px;color:var(--muted);font-size:.9rem}
 @media (prefers-reduced-motion:no-preference){.card{transition:box-shadow .15s,transform .15s}.card:hover{box-shadow:0 6px 16px rgba(36,26,18,.14);transform:translateY(-2px)}}
+
+/* Resplandor LED verde en elementos seleccionables */
+:root{--led:60,215,120}
+nav button,.chip,.card,.card .go,.card video,input[type=search]{transition:box-shadow .2s,background-color .2s,color .2s,text-shadow .2s,transform .15s}
+nav button{border-radius:8px 8px 0 0}
+nav button:hover,nav button:focus-visible{color:var(--accent);background:rgba(var(--led),.08);box-shadow:0 0 0 1px rgba(var(--led),.45),0 0 14px rgba(var(--led),.45);text-shadow:0 0 8px rgba(var(--led),.6)}
+nav button[aria-selected="true"]{background:rgba(var(--led),.10);box-shadow:0 0 0 1px rgba(var(--led),.5),0 0 16px rgba(var(--led),.5),inset 0 -3px 0 var(--gold);text-shadow:0 0 8px rgba(var(--led),.55)}
+.chip:hover,.chip:focus-visible{border-color:rgba(var(--led),.8);box-shadow:0 0 0 1px rgba(var(--led),.5),0 0 14px rgba(var(--led),.45)}
+.chip[aria-pressed="true"]{box-shadow:0 0 0 1px rgba(var(--led),.6),0 0 16px rgba(var(--led),.6),0 0 30px rgba(var(--led),.25)}
+.card:hover,.card:focus-within{box-shadow:0 0 0 1px rgba(var(--led),.6),0 0 18px rgba(var(--led),.45),0 0 38px rgba(var(--led),.2)}
+.card .go:hover,.card .go:focus-visible{text-shadow:0 0 10px rgba(var(--led),.75)}
+.card video:hover{box-shadow:0 0 0 2px rgba(var(--led),.6),0 0 22px rgba(var(--led),.5)}
+input[type=search]:focus{outline:none;border-color:rgba(var(--led),.9);box-shadow:0 0 0 2px rgba(var(--led),.4),0 0 16px rgba(var(--led),.45)}
+@keyframes led{0%,100%{filter:drop-shadow(0 0 0 rgba(var(--led),0))}50%{filter:drop-shadow(0 0 6px rgba(var(--led),.55))}}
+@media (prefers-reduced-motion:no-preference){.card:hover,.chip[aria-pressed="true"],nav button[aria-selected="true"]{animation:led 2.4s ease-in-out infinite}}
 </style>
 </head>
 <body>
